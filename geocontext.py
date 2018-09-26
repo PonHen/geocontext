@@ -1,8 +1,16 @@
 # geocontext.py
 # Pontus Hennerdal
-# September 18, 2018
+# September 26, 2018
 
-def kNearest_context(points_DataFrame, popLocations_DataFrame, group_List, pop_Column, kValue_List, points_NorthColumn='North', points_EastColumn='East', popLocations_NorthColumn='North', popLocations_EastColumn='East'):
+def kNearest_context(points_DataFrame,
+                     popLocations_DataFrame,
+                     group_List,
+                     pop_Column,
+                     kValue_List,
+                     points_NorthColumn='North',
+                     points_EastColumn='East',
+                     popLocations_NorthColumn='North',
+                     popLocations_EastColumn='East'):
     """This function calculate the geographical context around each point in the points_DataFrame. The context is the proportion of the population among the k-nearest neighbours in the popLocations_DataFrame that is part of a group. Distance is measured as the Euclidean distance."""
     
     # To make sure the k-values are listed ascending, the list with k-values is sorted.
@@ -10,8 +18,8 @@ def kNearest_context(points_DataFrame, popLocations_DataFrame, group_List, pop_C
     
     # Creating space in the points_DataFrame for radius, total, and group count for every k-value.
     for kValue in kValue_List:
-        points['radius_k'+str(kValue)] = 0
-        points['total_k'+str(kValue)] = 0
+        points_DataFrame['radius_k'+str(kValue)] = 0
+        points_DataFrame['total_k'+str(kValue)] = 0
         for group in group_List:
             points['group_'+group+'_k'+str(kValue)] = 0
     
